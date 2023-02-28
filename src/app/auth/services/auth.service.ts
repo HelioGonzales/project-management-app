@@ -17,6 +17,12 @@ export class AuthService {
     const url = environment.apiUrl + '/users';
     return this.http.get<CurrentUserInterface>(url);
   }
+  // **********
+  getUser(user: string): Observable<CurrentUserInterface> {
+    const url = environment.apiUrl + '/users/' + user;
+    return this.http.get<CurrentUserInterface>(url);
+  }
+  // *******************
 
   register(
     registerRequest: RegisterRequestInterface

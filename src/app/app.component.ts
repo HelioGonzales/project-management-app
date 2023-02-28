@@ -12,14 +12,24 @@ export class AppComponent implements OnInit {
   constructor(private authSvc: AuthService) {}
 
   ngOnInit(): void {
-    this.authSvc.getCurrentUser().subscribe(
-      (res) => {
-        console.log(res);
-      },
-      (error) => {
-        console.log(error);
-        this.authSvc.setCurrentUser(null);
-      }
-    );
+    // this.authSvc.getCurrentUser().subscribe(
+    //   (res) => {
+    //     console.log(res);
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //     this.authSvc.setCurrentUser(null);
+    //   }
+    // );
+
+    // ****************************************
+    const token = localStorage.getItem('token') || '';
+    const user = JSON.parse(atob(token?.split('.')[1]));
+    const id = `${user.id}`;
+
+    this.authSvc.getUser(id).subscribe((res) => {
+      console.log(res);
+    });
+    // ****************************************
   }
 }
