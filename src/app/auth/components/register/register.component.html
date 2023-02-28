@@ -1,0 +1,18 @@
+<div class="login-page">
+  <a [routerLink]="'/'">
+    <img src="/assets/pms-logo.svg" class="pms-main-logo" alt="">
+  </a>
+  <div class="form-container">
+    <div class="login-header">Register to PMS</div>
+    <div class="errors" *ngIf="errorMessage">{{ errorMessage }}</div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <input type="text" placeholder="Name" class="login-input" formControlName="name">
+      <input type="text" placeholder="Login" class="login-input" formControlName="login">
+      <input type="password" placeholder="Password" class="login-input" formControlName="password">
+      <button type="submit" class="login-submit-button">Register</button>
+    </form>
+    <div class="bottom-form-links">
+      <a [routerLink]="'/login'" class="register-link">Sign In</a>
+    </div>
+  </div>
+</div>

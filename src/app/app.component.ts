@@ -1,10 +1,25 @@
-import { Component } from '@angular/core';
+import { AuthService } from './auth/services/auth.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'project-management-app';
+
+  constructor(private authSvc: AuthService) {}
+
+  ngOnInit(): void {
+    this.authSvc.getCurrentUser().subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (error) => {
+        console.log(error);
+        this.authSvc.setCurrentUser(null);
+      }
+    );
+  }
 }
