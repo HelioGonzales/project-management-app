@@ -24,12 +24,17 @@ export class AppComponent implements OnInit {
 
     // ****************************************
     const token = localStorage.getItem('token') || '';
-    const user = JSON.parse(atob(token?.split('.')[1]));
-    const id = `${user.id}`;
+    if (token) {
+      const user = JSON.parse(atob(token?.split('.')[1]));
+      const id = `${user.id}`;
 
-    this.authSvc.getUser(id).subscribe((res) => {
-      console.log(res);
-    });
+      this.authSvc.getUser(id).subscribe((currentUser) => {
+        this.authSvc.setCurrentUser(currentUser);
+      });
+    } else {
+      return;
+    }
+
     // ****************************************
   }
 }
