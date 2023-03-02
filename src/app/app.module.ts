@@ -1,3 +1,4 @@
+import { BoardModule } from './board/board.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -5,7 +6,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
+import { AuthGuard } from './auth/services/auth.guard';
 import { AuthInterceptor } from './auth/services/auth.interceptor';
+import { BoardsModule } from './boards/boards.module';
 import { HomeModule } from './home/home.module';
 
 @NgModule({
@@ -16,6 +19,8 @@ import { HomeModule } from './home/home.module';
     AppRoutingModule,
     AuthModule,
     HomeModule,
+    BoardsModule,
+    BoardModule,
   ],
   providers: [
     {

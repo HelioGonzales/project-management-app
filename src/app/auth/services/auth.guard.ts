@@ -3,7 +3,6 @@ import { inject, Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivateFn,
-  CanMatch,
   Route,
   Router,
   RouterStateSnapshot,
