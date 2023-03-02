@@ -1,3 +1,4 @@
+import { SockectService } from './shared/services/sockect.service';
 import { BoardModule } from './board/board.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -28,6 +29,7 @@ import { HomeModule } from './home/home.module';
       useClass: AuthInterceptor,
       multi: true,
     },
+    SockectService,
   ],
   bootstrap: [AppComponent],
 })

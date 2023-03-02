@@ -1,3 +1,4 @@
+import { SockectService } from './../../shared/services/sockect.service';
 import { RegisterRequestInterface } from './../types/regiter-request';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -17,7 +18,7 @@ export class AuthService {
     map(Boolean)
   );
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private sockectSvc: SockectService) {}
 
   getCurrentUser(): Observable<CurrentUserInterface> {
     const url = environment.apiUrl + '/users';
@@ -53,5 +54,6 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('token');
     this.currentUser$.next(null);
+    this.sockectSvc.disconnect();
   }
 }

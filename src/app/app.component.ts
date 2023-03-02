@@ -1,5 +1,6 @@
 import { AuthService } from './auth/services/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { SockectService } from './shared/services/sockect.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,10 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'project-management-app';
 
-  constructor(private authSvc: AuthService) {}
+  constructor(
+    private authSvc: AuthService,
+    private socketSvc: SockectService
+  ) {}
 
   ngOnInit(): void {
     // this.authSvc.getCurrentUser().subscribe(
@@ -29,6 +33,7 @@ export class AppComponent implements OnInit {
       const id = `${user.id}`;
 
       this.authSvc.getUser(id).subscribe((currentUser) => {
+        this.socketSvc.setupSocketConnection(currentUser);
         this.authSvc.setCurrentUser(currentUser);
       });
     } else {
