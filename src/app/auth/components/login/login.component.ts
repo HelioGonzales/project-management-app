@@ -1,3 +1,4 @@
+import { SockectService } from './../../../shared/services/sockect.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -19,7 +20,8 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private authSvc: AuthService,
-    private router: Router
+    private router: Router,
+    private socketSvc: SockectService
   ) {}
 
   onSubmit(): void {
@@ -27,6 +29,7 @@ export class LoginComponent {
       (currentUser) => {
         console.log('Current User ', currentUser);
         this.authSvc.setToken(currentUser);
+        this.socketSvc.setupSocketConnection(currentUser);
         this.authSvc.setCurrentUser(currentUser);
         this.errorMessage = null;
         this.router.navigateByUrl('/');

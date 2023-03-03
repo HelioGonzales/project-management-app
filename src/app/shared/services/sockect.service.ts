@@ -25,4 +25,8 @@ export class SockectService {
 
     this.sockect.disconnect();
   }
+
+  emit(eventName: string, message: any): void {
+    this.sockect?.emit(eventName, message);
+  }
 }
