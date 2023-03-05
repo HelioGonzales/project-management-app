@@ -2,6 +2,7 @@ import { environment } from 'src/environments/environment.development';
 import { CurrentUserInterface } from './../../auth/types/current-user';
 import { Injectable } from '@angular/core';
 import { io, Socket } from 'socket.io-client';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -28,5 +29,18 @@ export class SockectService {
 
   emit(eventName: string, message: any): void {
     this.sockect?.emit(eventName, message);
+  }
+
+  listen<T>(eventName: string): Observable<T> {
+    const socket = this.sockect;
+    if (!socket) {
+      throw new Error('Socket connectio is nor establish');
+    }
+
+    return new Observable((subscriber) => {
+      socket.on(eventName, (data) => {
+        subscriber.next(data);
+      });
+    });
   }
 }

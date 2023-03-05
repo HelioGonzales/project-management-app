@@ -1,3 +1,5 @@
+import { InlineFormModule } from './../shared/modules/inline-form/inline-form.module';
+import { ColumnsService } from './../shared/services/columns.service';
 import { BoardService } from './services/board.service';
 import { Routes, RouterModule } from '@angular/router';
 import { TopbarModule } from './../shared/modules/topbar/topbar.module';
@@ -16,7 +18,13 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [BoardComponent],
-  imports: [CommonModule, TopbarModule, RouterModule.forChild(routes)],
-  providers: [BoardService],
+  imports: [
+    CommonModule,
+    TopbarModule,
+    RouterModule.forChild(routes),
+    TopbarModule,
+    InlineFormModule,
+  ],
+  providers: [BoardService, ColumnsService],
 })
 export class BoardModule {}
