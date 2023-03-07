@@ -9,6 +9,12 @@
       <div class="column-title">
         {{ column .title }}
       </div>
+      <div *ngFor="let task of getTaskByColumn(column._id, data.tasks)" class="task">
+        {{task.title}}
+      </div>
+      <app-inline-form class="crate-task-form" defaultText="Add a card" [hasButton]="true" buttonText="Add card"
+        inputPlaceHolder="Enter a title for this card"
+        (handleSubmit)="createTask($event, column._id, data.tasks)"></app-inline-form>
     </div>
     <app-inline-form class="create-column-form" defaultText="Add a list" [hasButton]="true" buttonText="Add list"
       inputPlaceHolder="Add Column name" (handleSubmit)="createColumn($event)"></app-inline-form>
