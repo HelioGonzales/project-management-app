@@ -7,12 +7,20 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  OnDestroy,
   OnInit,
   ViewChild,
 } from '@angular/core';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { BoardService } from 'src/app/board/services/board.service';
-import { combineLatest, filter, map, Observable } from 'rxjs';
+import {
+  combineLatest,
+  filter,
+  map,
+  Observable,
+  Subject,
+  takeUntil,
+} from 'rxjs';
 import { SockectService } from 'src/app/shared/services/sockect.service';
 import { BoardInterface } from 'src/app/shared/types/board.interface';
 import { ColumnInterface } from 'src/app/shared/types/column.interfacec';
@@ -23,7 +31,7 @@ import { TaskService } from 'src/app/shared/services/task.service';
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss'],
 })
-export class BoardComponent implements OnInit {
+export class BoardComponent implements OnInit, OnDestroy {
   boardId!: string;
   // columnId = '64026184b564f2959da6e022';
   columnId!: string;
@@ -36,6 +44,8 @@ export class BoardComponent implements OnInit {
     columns: ColumnInterface[];
     tasks: TaskInterface[];
   }>;
+
+  unsubscribe$ = new Subject<void>();
 
   constructor(
     private boardsSvc: BoardsService,
@@ -90,27 +100,33 @@ export class BoardComponent implements OnInit {
 
   initializeListeners(): void {
     this.router.events.subscribe((event) => {
-      if (event instanceof NavigationStart) {
-        console.log('leaving a page');
+      if (event instanceof NavigationStart && !event.url.includes('/boards/')) {
         this.boardSvc.leaveBoard(this.boardId);
       }
     });
   }
 
   fetchData(): void {
-    this.boardsSvc.getBoard(this.boardId).subscribe((board) => {
-      this.boardSvc.setBoard(board);
-    });
+    this.boardsSvc
+      .getBoard(this.boardId)
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((board) => {
+        this.boardSvc.setBoard(board);
+      });
 
-    this.columnsSvc.getColumns(this.boardId).subscribe((columns) => {
-      this.boardSvc.setColumns(columns);
-    });
+    this.columnsSvc
+      .getColumns(this.boardId)
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((columns) => {
+        this.boardSvc.setColumns(columns);
+      });
 
-    this.tasksSvc.getTasks(this.boardId).subscribe((tasks) => {
-      console.log(tasks);
-
-      this.boardSvc.setTask(tasks);
-    });
+    this.tasksSvc
+      .getTasks(this.boardId)
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((tasks) => {
+        this.boardSvc.setTask(tasks);
+      });
   }
 
   createColumn(title: string, order = 1): void {
@@ -121,16 +137,41 @@ export class BoardComponent implements OnInit {
 
     this.columnsSvc
       .createColumn(this.boardId, title, order)
+      .pipe(takeUntil(this.unsubscribe$))
       .subscribe((column) => {
         this.fetchData();
       });
   }
 
+  updateColumnName(title: string, columnId: string) {
+    this.columnsSvc
+      .updateColumn(this.boardId, columnId, title)
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((res) => {
+        this.fetchData();
+      });
+  }
+
+  deleteColumn(columnId: string) {
+    if (confirm('are ypu sure you want to delete the column???')) {
+      this.columnsSvc
+        .deleteColumn(this.boardId, columnId)
+        .pipe(takeUntil(this.unsubscribe$))
+        .subscribe((res) => {
+          this.fetchData();
+        });
+    }
+  }
+
   createTask(title: string, columnId: string, userId: any) {
-    userId.map((task: any) => (this.userId = task.userId));
+    // userId.map((task: any) => console.log(task.userId));
+    // console.log(userId);
+
+    // console.log(userId.owner);
 
     this.tasksSvc
-      .createTask(this.boardId, columnId, title, this.userId)
+      .createTask(this.boardId, columnId, title, userId.owner)
+      .pipe(takeUntil(this.unsubscribe$))
       .subscribe((task) => {
         this.fetchData();
       });
@@ -140,5 +181,36 @@ export class BoardComponent implements OnInit {
     return tasks.filter((task) => {
       return task.columnId === columnId;
     });
+  }
+
+  updateBoardName(boardName: string, owner: any): void {
+    // console.log(owner.owner);
+
+    this.boardsSvc
+      .updateBoard(this.boardId, boardName, owner.owner)
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((res) => {
+        this.fetchData();
+      });
+  }
+
+  deleteBoard() {
+    if (confirm('Are you sure to delete this board???')) {
+      this.boardsSvc
+        .deleteBoard(this.boardId)
+        .pipe(takeUntil(this.unsubscribe$))
+        .subscribe((res) => {
+          this.router.navigateByUrl('/boards');
+        });
+    }
+  }
+
+  openTask(taskId: string): void {
+    this.router.navigate(['boards', this.boardId, 'tasks', taskId]);
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }

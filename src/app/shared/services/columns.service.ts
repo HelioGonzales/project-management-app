@@ -30,4 +30,18 @@ export class ColumnsService {
     const url = `${environment.apiUrl}/boards/${boardId}/columns`;
     return this.http.post<ColumnInterface>(url, { title, order });
   }
+
+  updateColumn(
+    boardId: string,
+    columnId: string,
+    title: string
+  ): Observable<ColumnInterface> {
+    const url = `${environment.apiUrl}/boards/${boardId}/columns/${columnId}`;
+    return this.http.put<ColumnInterface>(url, { title, order: 0 });
+  }
+
+  deleteColumn(boardId: string, columnId: string): Observable<ColumnInterface> {
+    const url = `${environment.apiUrl}/boards/${boardId}/columns/${columnId}`;
+    return this.http.delete<ColumnInterface>(url);
+  }
 }
