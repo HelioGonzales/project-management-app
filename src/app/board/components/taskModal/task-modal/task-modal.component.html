@@ -1,7 +1,10 @@
 <div class="task-modal-container" *ngIf="data$ | async as data">
   <div class="task-modal-header">
+
     <app-inline-form class="task-modal-edit-title-form" [defaultText]="data.task.title" [title]="data.task.title"
-      (handleSubmit)="updateTaskName($event)"></app-inline-form>
+      (handleSubmit)="updateTaskName($event, data.board.owner, data.task.description)"></app-inline-form>
+
+
     <div class="task-modal-close" (click)="goToBoard()">X</div>
   </div>
   <div class="task-modal-body">
@@ -11,18 +14,20 @@
           <option *ngFor="let column of data.columns" [ngValue]="column._id">{{ column.title }}</option>
         </select>
       </form>
-      <div class="task-modal-description-label">Description</div>
+      <!-- Needs implementation -->
+      <!-- <div class="task-modal-description-label">Description</div>
       <app-inline-form class="task-modal-edit-description-form"
         [defaultText]="data.task.description || 'Add more description'" [title]="data.task.description || ''"
         inputType="textarea" [hasButton]="true" buttonText="Save"
-        (handleSubmit)="updateTaskDescription($event)"></app-inline-form>
+        (handleSubmit)="updateTaskDescription($event, data.board.owner, data.task.title)"></app-inline-form> -->
     </div>
   </div>
   <div class="task-modal-actions">
     <div class="task-modal-actions-label">Actions</div>
     <div>
       <div class="task-modal-actions-action">
-        <div class="task-modal-actions-icon">Delete</div>
+        <div class="task-modal-actions-icon" (click)=" deleteTask(data.board._id, data.task.columnId, data.task._id)">
+          Delete</div>
       </div>
     </div>
   </div>

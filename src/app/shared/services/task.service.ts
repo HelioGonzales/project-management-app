@@ -8,8 +8,12 @@ import { environment } from 'src/environments/environment.development';
 export class TaskService {
   constructor(private http: HttpClient) {}
 
-  getTask(boardId: string, columnId: string): Observable<TaskInterface[]> {
-    const url = `${environment.apiUrl}/boards/${boardId}/columns/${columnId}/tasks`;
+  getTask(
+    boardId: string,
+    columnId: string,
+    taskId: string
+  ): Observable<TaskInterface[]> {
+    const url = `${environment.apiUrl}/boards/${boardId}/columns/${columnId}/tasks/${taskId}`;
     return this.http.get<TaskInterface[]>(url);
   }
 
@@ -33,5 +37,35 @@ export class TaskService {
       description: 'default',
       users: ['default'],
     });
+  }
+
+  updateTask(
+    boardId: string,
+    taskId: string,
+    // order: 0,
+    columnId: string,
+    userId: string,
+    title?: string,
+    description?: string
+    // users: string[]
+  ): Observable<TaskInterface> {
+    const url = `${environment.apiUrl}/boards/${boardId}/columns/${columnId}/tasks/${taskId}`;
+    return this.http.put<TaskInterface>(url, {
+      title,
+      order: 0,
+      description,
+      columnId,
+      userId,
+      users: [''],
+    });
+  }
+
+  deleteTask(
+    boardId: string,
+    columnId: string,
+    taskId: string
+  ): Observable<TaskInterface> {
+    const url = `${environment.apiUrl}/boards/${boardId}/columns/${columnId}/tasks/${taskId}`;
+    return this.http.delete<TaskInterface>(url);
   }
 }
