@@ -33,7 +33,7 @@ export class RegisterComponent {
         this.socketSvc.setupSocketConnection(currentUser);
         this.authSvc.setCurrentUser(currentUser);
         this.errorMessage = null;
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/login');
       },
       (err: HttpErrorResponse) => {
         console.log(err.error.message);
