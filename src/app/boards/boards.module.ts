@@ -1,3 +1,4 @@
+import { FooterModule } from './../shared/modules/footer/footer.module';
 import { InlineFormModule } from './../shared/modules/inline-form/inline-form.module';
 import { BoardsService } from './../shared/services/boards.service';
 import { inject, NgModule } from '@angular/core';
@@ -32,6 +33,7 @@ const routes: Routes = [
         deps: [HttpClient],
       },
     }),
+    FooterModule
   ],
   providers: [AuthGuard, BoardsService],
 })

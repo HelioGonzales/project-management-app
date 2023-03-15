@@ -1,0 +1,13 @@
+.footer {
+  background-color: #026aa7;
+}
+
+.footer-flex {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.footer-icon {
+  width: 200px;
+}

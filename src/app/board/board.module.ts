@@ -1,3 +1,4 @@
+import { FooterModule } from './../shared/modules/footer/footer.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TaskService } from './../shared/services/task.service';
 import { InlineFormModule } from './../shared/modules/inline-form/inline-form.module';
@@ -45,6 +46,7 @@ const routes: Routes = [
       },
     }),
     HttpClientModule,
+    FooterModule,
   ],
   providers: [BoardService, ColumnsService, TaskService],
 })

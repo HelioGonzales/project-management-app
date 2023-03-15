@@ -1,3 +1,4 @@
+import { FooterModule } from './../shared/modules/footer/footer.module';
 import { HomeComponent } from './components/home/home.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -26,6 +27,7 @@ const routes: Routes = [
       },
     }),
     HttpClientModule,
+    FooterModule,
   ],
 })
 export class HomeModule {}
