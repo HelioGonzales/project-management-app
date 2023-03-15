@@ -1,6 +1,7 @@
 import { AuthService } from './auth/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { SockectService } from './shared/services/sockect.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +13,14 @@ export class AppComponent implements OnInit {
 
   constructor(
     private authSvc: AuthService,
-    private socketSvc: SockectService
+    private socketSvc: SockectService,
+    private translate: TranslateService
   ) {}
 
   ngOnInit(): void {
+    this.translate.setDefaultLang('en');
+    // this.translate.use('en');
+
     // this.authSvc.getCurrentUser().subscribe(
     //   (res) => {
     //     console.log(res);

@@ -4,7 +4,7 @@
   <div class="board-header-container">
     <app-inline-form class="edit-board-form" [defaultText]="data.board.title" [title]="data.board.title"
       (handleSubmit)="updateBoardName($event, data.board)"></app-inline-form>
-    <div class="delete-board" (click)="deleteBoard()">Delete board</div>
+    <div class="delete-board" (click)="deleteBoard()">{{ 'BOARD.DELETE' | translate }}</div>
   </div>
   <div class="columns">
     <div class="column" *ngFor="let column of data.columns">
@@ -17,12 +17,14 @@
         {{task.title}}
       </div>
 
-      <app-inline-form class="create-task-form" defaultText="Add a card" [hasButton]="true" buttonText="Add card"
-        inputPlaceHolder="Enter a title for this card"
+      <app-inline-form class="create-task-form" defaultText="{{ 'BOARD.ADD_CARD' | translate }}" [hasButton]="true"
+        buttonText="{{ 'BOARD.ADD_CARD_BTN' | translate }}"
+        inputPlaceHolder="{{ 'BOARD.ENTER_TITLE_CARD' | translate }}"
         (handleSubmit)="createTask($event, column._id, data.board)"></app-inline-form>
     </div>
-    <app-inline-form class="create-column-form" defaultText="Add a list" [hasButton]="true" buttonText="Add list"
-      inputPlaceHolder="Add Column name" (handleSubmit)="createColumn($event)"></app-inline-form>
+    <app-inline-form class="create-column-form" defaultText="{{ 'BOARD.ADD_LIST' | translate }}" [hasButton]="true"
+      buttonText="{{ 'BOARD.ADD_LIST_BTN' | translate }}" inputPlaceHolder="{{ 'BOARD.ADD_COLUMN_NAME' | translate }}"
+      (handleSubmit)="createColumn($event)"></app-inline-form>
   </div>
 </div>
 <router-outlet></router-outlet>

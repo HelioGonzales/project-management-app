@@ -23,11 +23,11 @@
     </div>
   </div>
   <div class="task-modal-actions">
-    <div class="task-modal-actions-label">Actions</div>
+    <div class="task-modal-actions-label">{{ 'TASKS.ACTIONS' | translate }}</div>
     <div>
       <div class="task-modal-actions-action">
         <div class="task-modal-actions-icon" (click)=" deleteTask(data.board._id, data.task.columnId, data.task._id)">
-          Delete</div>
+          {{ 'TASKS.DELETE' | translate }}</div>
       </div>
     </div>
   </div>

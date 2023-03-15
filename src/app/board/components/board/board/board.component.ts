@@ -25,6 +25,7 @@ import { SockectService } from 'src/app/shared/services/sockect.service';
 import { BoardInterface } from 'src/app/shared/types/board.interface';
 import { ColumnInterface } from 'src/app/shared/types/column.interfacec';
 import { TaskService } from 'src/app/shared/services/task.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-board',
@@ -54,7 +55,8 @@ export class BoardComponent implements OnInit, OnDestroy {
     private socketSvc: SockectService,
     private router: Router,
     private columnsSvc: ColumnsService,
-    private tasksSvc: TaskService
+    private tasksSvc: TaskService,
+    public translate: TranslateService
   ) {
     this.route.params.subscribe((id) => {
       this.boardId = id['boardId'];
@@ -86,6 +88,13 @@ export class BoardComponent implements OnInit, OnDestroy {
   // }
 
   ngOnInit(): void {
+    this.translate.setDefaultLang('en');
+    this.translate.setDefaultLang('en');
+    const lang = localStorage.getItem('lang');
+    if (lang) {
+      this.translate.use(lang);
+    }
+
     this.socketSvc.emit(SockectEventsEnum.boardsJoin, {
       boardId: this.boardId,
     });

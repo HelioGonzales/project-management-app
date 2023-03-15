@@ -1,6 +1,7 @@
 import { BoardInterface } from './../../shared/types/board.interface';
 import { Component, OnInit } from '@angular/core';
 import { BoardsService } from 'src/app/shared/services/boards.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-boards',
@@ -10,9 +11,18 @@ import { BoardsService } from 'src/app/shared/services/boards.service';
 export class BoardsComponent implements OnInit {
   boards: BoardInterface[] = [];
 
-  constructor(private boardsSvc: BoardsService) {}
+  constructor(
+    private boardsSvc: BoardsService,
+    public translate: TranslateService
+  ) {}
 
   ngOnInit(): void {
+    this.translate.setDefaultLang('en');
+    const lang = localStorage.getItem('lang');
+    if (lang) {
+      this.translate.use(lang);
+    }
+
     const token = localStorage.getItem('token') || '';
     if (token) {
       const user = JSON.parse(atob(token?.split('.')[1]));

@@ -6,6 +6,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { BoardsComponent } from './boards/boards.component';
 import { AuthGuard } from '../auth/services/auth.guard';
 import { TopbarModule } from '../shared/modules/topbar/topbar.module';
+import { HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 const routes: Routes = [
   {
@@ -22,7 +25,18 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     InlineFormModule,
     TopbarModule,
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
   ],
   providers: [AuthGuard, BoardsService],
 })
 export class BoardsModule {}
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}

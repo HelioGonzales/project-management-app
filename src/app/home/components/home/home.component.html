@@ -3,20 +3,21 @@
     <img src="/assets/pms-logo.svg" alt="">
   </a>
   <div>
-    <a [routerLink]="'/login'" class="home-header-login">Login</a>
-    <a [routerLink]="'/register'" class="home-header-register">Register</a>
+    <a [routerLink]="'/login'" class="home-header-login">{{ 'HOME.LOGIN' | translate }}</a>
+    <a [routerLink]="'/register'" class="home-header-register">{{ 'HOME.REGISTER' | translate }}</a>
+    <button *ngFor="let lang of stateOptions" (click)="onLanguageChange(lang)">{{ lang.label
+      }}</button>
+    <!-- <button>English</button> -->
   </div>
 </header>
 <div class="home-hero">
   <div class="home-container">
     <div>
       <h1 class="home-title">
-        PMS some sentence
+        {{ 'HOME.TITLE' | translate}}
       </h1>
       <p class="home-description">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae corporis labore ullam placeat molestias
-        voluptatibus ipsum. Officia fuga voluptatum accusantium ab aut! Placeat vero iusto illo labore rem fuga
-        explicabo.
+        {{ 'HOME.PARAGRAPH' | translate}}
       </p>
     </div>
     <div>
@@ -25,7 +26,7 @@
   </div>
 </div>
 
-<div class="home-team">
+<!-- <div class="home-team">
   <div class="home-container team-container">
     <div>
       <h1 class="home-title">Another thext</h1>
@@ -75,4 +76,4 @@
         alt="">
     </div>
   </div>
-</div>
+</div> -->

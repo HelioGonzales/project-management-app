@@ -2,20 +2,20 @@
 
 <div class="boards-page-container">
   <div class="home-left-sidebar-container">
-    <a [routerLink]="'/boards'" class="boards-side-menu-option"
-      routerLinkActive="boards-side-menu-option-selected">Boards</a>
+    <a [routerLink]="'/boards'" class="boards-side-menu-option" routerLinkActive="boards-side-menu-option-selected">{{
+      'BOARDS.BTN' | translate }}</a>
 
     <a [routerLink]="'/'" class="boards-side-menu-option" routerLinkActive="boards-side-menu-option-selected"
-      [routerLinkActiveOptions]="{exact: true}">Home</a>
+      [routerLinkActiveOptions]="{exact: true}">{{ 'BOARDS.HOME_BTN' | translate }}</a>
   </div>
 
   <div class="boards-section-container">
     <div class="my-boards">
       <div class="my-boards-section-header">
-        <div class="boards-page-header-name">My boards</div>
+        <div class="boards-page-header-name">{{ 'BOARDS.MY_BOARDS' | translate }}</div>
       </div>
       <div class="board-tile-list">
-        <app-inline-form class="create-board-form" defaultText="Create new board"
+        <app-inline-form class="create-board-form" defaultText="{{ 'BOARDS.CREATE_NEW_BOARD' | translate }}"
           (handleSubmit)="createBoard($event)"></app-inline-form>
         <a [routerLink]="['/boards', board._id]" *ngFor="let board of boards" class="board-tile">
           <div class="board-tile-details-name">{{ board.title }}</div>

@@ -14,14 +14,15 @@ import {
 } from 'rxjs';
 import { BoardService } from './../../../services/board.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Component, HostBinding, OnDestroy } from '@angular/core';
+import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-task-modal',
   templateUrl: './task-modal.component.html',
   styleUrls: ['./task-modal.component.scss'],
 })
-export class TaskModalComponent implements OnDestroy {
+export class TaskModalComponent implements OnInit, OnDestroy {
   boardId!: string;
   taskId!: string;
   columnId!: string | null;
@@ -47,7 +48,8 @@ export class TaskModalComponent implements OnDestroy {
     private router: Router,
     private boardSvc: BoardService,
     private fb: FormBuilder,
-    private tasksSvc: TaskService
+    private tasksSvc: TaskService,
+    private translate: TranslateService
   ) {
     this.route.parent?.params.subscribe((id: Params) => {
       this.boardId = id['boardId'];
@@ -111,6 +113,15 @@ export class TaskModalComponent implements OnDestroy {
     //   console.log(columnId);
     //   this.columnId = columnId;
     // });
+  }
+
+  ngOnInit(): void {
+    this.translate.setDefaultLang('en');
+    this.translate.setDefaultLang('en');
+    const lang = localStorage.getItem('lang');
+    if (lang) {
+      this.translate.use(lang);
+    }
   }
 
   goToBoard(): void {

@@ -10,6 +10,9 @@ import { CommonModule } from '@angular/common';
 import { BoardComponent } from './components/board/board/board.component';
 import { AuthGuard } from '../auth/services/auth.guard';
 import { TaskModalComponent } from './components/taskModal/task-modal/task-modal.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 const routes: Routes = [
   {
@@ -34,7 +37,19 @@ const routes: Routes = [
     TopbarModule,
     InlineFormModule,
     ReactiveFormsModule,
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
+    HttpClientModule,
   ],
   providers: [BoardService, ColumnsService, TaskService],
 })
 export class BoardModule {}
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
