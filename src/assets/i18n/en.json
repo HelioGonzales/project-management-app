@@ -23,5 +23,18 @@
   "TASKS": {
     "DELETE": "Delete",
     "ACTIONS": "Actions"
+  },
+  "REGISTER": {
+    "REGISTER": "Register to PMS",
+    "NAME": "Name",
+    "USERNAME_REQ": "Username is required",
+    "MIN_CHARACTERS": "Minimun 5 characters",
+    "LOGIN_REQ": "Login is required",
+    "PASSWORD": "Password",
+    "PASSWORD_REQ": "Password is required",
+    "REGISTER_BTN": "Register",
+    "SIGN_IN": "Sign In",
+    "REGISTER_ACCOUNT": "Register for an account",
+    "LOGIN_PMS": "Login to PMS"
   }
 }

@@ -3,15 +3,16 @@
     <img src="/assets/pms-logo.svg" class="pms-main-logo" alt="">
   </a>
   <div class="form-container">
-    <div class="login-header">Login to PMS</div>
+    <div class="login-header">{{ 'REGISTER.LOGIN_PMS' | translate }}</div>
     <div class="errors" *ngIf="errorMessage">{{ errorMessage }}</div>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <input type="text" placeholder="Login" class="login-input" formControlName="login">
-      <input type="password" placeholder="Password" class="login-input" formControlName="password">
-      <button type="submit" class="login-submit-button">Sig in</button>
+      <input type="password" placeholder="{{ 'REGISTER.PASSWORD' | translate }}" class="login-input"
+        formControlName="password">
+      <button type="submit" class="login-submit-button">{{ 'REGISTER.SIGN_IN' | translate }}</button>
     </form>
     <div class="bottom-form-links">
-      <a [routerLink]="'/register'" class="register-link">Sign up for an account</a>
+      <a [routerLink]="'/register'" class="register-link">{{ 'REGISTER.REGISTER_ACCOUNT' | translate }}</a>
     </div>
   </div>
 </div>

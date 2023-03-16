@@ -3,16 +3,39 @@
     <img src="/assets/pms-logo.svg" class="pms-main-logo" alt="">
   </a>
   <div class="form-container">
-    <div class="login-header">Register to PMS</div>
+    <div class="login-header">{{ 'REGISTER.REGISTER' | translate }}</div>
     <div class="errors" *ngIf="errorMessage">{{ errorMessage }}</div>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <input type="text" placeholder="Name" class="login-input" formControlName="name">
-      <input type="text" placeholder="Login" class="login-input" formControlName="login">
-      <input type="password" placeholder="Password" class="login-input" formControlName="password">
-      <button type="submit" class="login-submit-button">Register</button>
+      <div>
+        <input type="text" placeholder="{{ 'REGISTER.NAME' | translate }}" class="login-input" formControlName="name">
+
+        <span class="errors" *ngIf="!form.get('name')?.valid && form.get('name')?.touched">
+          <span *ngIf="form.get('name')?.errors?.['required']">{{ 'REGISTER.USERNAME_REQ' | translate }}</span>
+          <span *ngIf="form.get('name')?.errors?.['minlength']">{{ 'REGISTER.MIN_CHARACTERS' | translate }}</span>
+        </span>
+      </div>
+      <div>
+        <input type="text" placeholder="Login" class="login-input" formControlName="login">
+
+        <span class="errors" *ngIf="!form.get('login')?.valid && form.get('login')?.touched">
+          <span *ngIf="form.get('login')?.errors?.['required']">{{ 'REGISTER.LOGIN_REQ' | translate }}</span>
+          <span *ngIf="form.get('login')?.errors?.['minlength']">{{ 'REGISTER.MIN_CHARACTERS' | translate }}</span>
+        </span>
+      </div>
+      <div>
+        <input type="password" placeholder="{{ 'REGISTER.PASSWORD' | translate }}" class="login-input"
+          formControlName="password">
+
+        <span class="errors" *ngIf="!form.get('password')?.valid && form.get('password')?.touched">
+          <span *ngIf="form.get('password')?.errors?.['required']">{{ 'REGISTER.PASSWORD_REQ' | translate }}</span>
+        </span>
+
+      </div>
+      <button type="submit" [disabled]="form.invalid" class="login-submit-button">{{ 'REGISTER.REGISTER_BTN' | translate
+        }}</button>
     </form>
     <div class="bottom-form-links">
-      <a [routerLink]="'/login'" class="register-link">Sign In</a>
+      <a [routerLink]="'/login'" class="register-link">{{ 'REGISTER.SIGN_IN' | translate }}</a>
     </div>
   </div>
 </div>

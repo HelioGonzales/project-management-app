@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-register',
@@ -13,8 +14,8 @@ import { AuthService } from '../../services/auth.service';
 export class RegisterComponent {
   errorMessage: string | null = null;
   form: any = this.fb.group({
-    name: ['', Validators.required],
-    login: ['', Validators.required],
+    name: ['', [Validators.required, Validators.minLength(5)]],
+    login: ['', [Validators.required, Validators.minLength(5)]],
     password: ['', Validators.required],
   });
 
@@ -22,10 +23,19 @@ export class RegisterComponent {
     private fb: FormBuilder,
     private authSvc: AuthService,
     private router: Router,
-    private socketSvc: SockectService
+    private socketSvc: SockectService,
+    public translate: TranslateService
   ) {}
 
   onSubmit(): void {
+    this.translate.setDefaultLang('en');
+    const lang = localStorage.getItem('lang');
+    if (lang) {
+      this.translate.use(lang);
+    }
+
+    if (!this.form.valid) return;
+
     this.authSvc.register(this.form.value).subscribe(
       (currentUser) => {
         console.log('Current User ', currentUser);
