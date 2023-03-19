@@ -3,6 +3,22 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
+  height: 100vh;
+}
+
+@media screen and (max-width: 640px) {
+  .boards-page-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 320px) {
+  .boards-page-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 .home-left-sidebar {

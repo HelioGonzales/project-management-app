@@ -5,7 +5,10 @@
   text-align: center;
   flex-direction: column;
   justify-content: space-between;
-  /* height: 100vh; */
+}
+
+.login-wrapper {
+  min-height: 100vh;
 }
 
 .pms-main-logo {

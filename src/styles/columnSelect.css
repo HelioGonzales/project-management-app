@@ -32,4 +32,5 @@
 .column-select-container {
   margin-bottom: 20px;
   margin-top: 20px;
+  min-width: 10rem;
 }

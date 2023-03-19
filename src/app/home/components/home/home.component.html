@@ -5,9 +5,8 @@
   <div>
     <a [routerLink]="'/login'" class="home-header-login">{{ 'HOME.LOGIN' | translate }}</a>
     <a [routerLink]="'/register'" class="home-header-register">{{ 'HOME.REGISTER' | translate }}</a>
-    <button *ngFor="let lang of stateOptions" (click)="onLanguageChange(lang)">{{ lang.label
+    <button class="home-language-btn" *ngFor="let lang of stateOptions" (click)="onLanguageChange(lang)">{{ lang.label
       }}</button>
-    <!-- <button>English</button> -->
   </div>
 </header>
 <div class="home-hero">
@@ -25,7 +24,20 @@
     </div>
   </div>
 </div>
-<app-footer></app-footer>
+<!-- <app-footer></app-footer> -->
+<!-- <footer>
+  <div class="footer">
+    <div class="footer-flex">
+      <a href="https://github.com/" target="_blank">
+        GITHUB
+      </a>
+      <p>2023</p>
+      <a href="https://rs.school/angular/" target="_blank">
+        <img src="/assets/rs_school_js.svg" alt="" class="footer-icon">
+      </a>
+    </div>
+  </div>
+</footer> -->
 
 <!-- <div class="home-team">
   <div class="home-container team-container">

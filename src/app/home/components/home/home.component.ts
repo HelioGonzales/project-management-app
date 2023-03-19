@@ -19,8 +19,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     public translate: TranslateService
   ) {
     this.stateOptions = [
-      { label: 'English', value: 'en' },
-      { label: 'Spanish', value: 'es' },
+      { label: 'EN', value: 'en' },
+      { label: 'SP', value: 'es' },
     ];
   }
 

@@ -1,5 +1,5 @@
 <div class="inline-form-container" [ngClass]="{'inline-form-container-editing': isEditing}" (click)="activateEditing()">
-  <div class="inlie-form-text" *ngIf="!isEditing">{{ defaultText }}</div>
+  <div class="inline-form-text" *ngIf="!isEditing">{{ defaultText }}</div>
 
   <form [formGroup]="form" (ngSubmit)="onSubmimt()" *ngIf="isEditing" class="inline-form">
     <input type="text" formControlName="title" class="inline-form-input" [placeholder]="inputPlaceHolder"

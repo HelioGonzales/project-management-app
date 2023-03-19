@@ -3,11 +3,49 @@
 }
 
 .footer-flex {
+  width: 100%;
+  padding: 16px;
+  height: 72px;
+  background-color: #0079bf;
   display: flex;
-  justify-content: space-around;
   align-items: center;
+  justify-content: space-between;
 }
 
 .footer-icon {
-  width: 200px;
+  width: 3rem;
 }
+
+/* footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  margin-bottom: 20px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 0 10px;
+}
+
+Estilos para pantallas pequeñas
+@media (max-width: 768px) {
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer-links a {
+    margin-bottom: 10px;
+  }
+} */

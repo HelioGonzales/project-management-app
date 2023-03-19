@@ -1,16 +1,40 @@
 .home-hero {
-  background: linear-gradient(135deg, #0079bf, #5067c5);
+  background: #fff;
+  /* background: linear-gradient(135deg, #0079bf, #5067c5); */
+  display: flex;
+  flex-direction: column;
 }
 
 .home-container {
   max-width: 1140px;
-  color: #fff;
+  /* color: #fff; */
+  color: #000;
   display: flex;
   margin: 0 auto;
   align-items: center;
   padding-bottom: 80px;
   padding-top: 80px;
   justify-content: space-between;
+  flex-grow: 1;
+  min-height: 100vh;
+}
+
+.home-container > div {
+  width: 50%;
+  margin: 40px;
+}
+
+@media screen and (max-width: 640px) {
+  .home-container {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+@media screen and (max-width: 320px) {
+  .home-container {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 }
 
 .home-title {
@@ -59,6 +83,25 @@
   line-height: 26px;
 }
 
+.home-language-btn {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 17px;
+  margin-right: 5px;
+  margin-left: 5px;
+  background: transparent;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  line-height: 26px;
+}
+
+.home-language-btn:hover {
+  color: #5067c5;
+  background: #fff;
+}
+
 .team-container {
   color: #2c3e50;
 }
@@ -72,7 +115,8 @@
 }
 
 .team-image {
-  max-width: 700px;
+  /* max-width: 700px; */
+  width: 100%;
 }
 
 .workflow-image {

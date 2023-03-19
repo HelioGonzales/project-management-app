@@ -1,7 +1,10 @@
 .board {
-  background: #00add0;
+  /* background: #00add0; */
+  background: #fff;
   height: 100vh;
   overflow-x: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .board-header-container {
@@ -11,11 +14,14 @@
 }
 
 .delete-board {
+  /* color: #fff; */
   color: #fff;
   padding: 5px 8px;
   border-radius: 3px;
+  border: none;
   font-size: 14px;
-  background-color: hsla(0, 0%, 100%, 0.3);
+  /* background-color: hsla(0, 0%, 100%, 0.3); */
+  background-color: #dc3545;
   height: 32px;
   display: flex;
   align-items: center;
@@ -23,6 +29,7 @@
 }
 
 .delete-board:hover {
+  color: #dc3545;
   background-color: hsla(0, 0%, 100%, 0.2);
 }
 

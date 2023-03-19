@@ -1,3 +1,4 @@
+import { FooterModule } from './shared/modules/footer/footer.module';
 import { SockectService } from './shared/services/sockect.service';
 import { BoardModule } from './board/board.module';
 import {
@@ -39,6 +40,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient],
       },
     }),
+    FooterModule,
   ],
   providers: [
     {
