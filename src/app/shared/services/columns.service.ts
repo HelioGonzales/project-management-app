@@ -18,10 +18,6 @@ export class ColumnsService {
     return this.http.get<ColumnInterface[]>(url);
   }
 
-  // createColumn(columnInput: ColumnInputInterface): void {
-  //   this.socketSvc.emit(SockectEventsEnum.columnsCreate, columnInput);
-  // }
-
   createColumn(
     boardId: string,
     title: string,

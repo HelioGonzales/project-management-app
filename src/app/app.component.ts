@@ -19,17 +19,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.translate.setDefaultLang('en');
-    // this.translate.use('en');
-
-    // this.authSvc.getCurrentUser().subscribe(
-    //   (res) => {
-    //     console.log(res);
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //     this.authSvc.setCurrentUser(null);
-    //   }
-    // );
 
     // ****************************************
     const token = localStorage.getItem('token') || '';

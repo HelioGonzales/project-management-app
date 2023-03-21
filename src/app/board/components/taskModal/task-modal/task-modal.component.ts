@@ -27,13 +27,11 @@ export class TaskModalComponent implements OnInit, OnDestroy {
   taskId!: string;
   columnId!: string | null;
   task$: Observable<TaskInterface>;
-  // task$: any;
   data$: Observable<{
     task: TaskInterface;
     columns: ColumnInterface[];
     board: BoardInterface;
   }>;
-  // data$: Observable<any>;
 
   columnForm = this.fb.group({
     columnId: [''],
@@ -98,7 +96,6 @@ export class TaskModalComponent implements OnInit, OnDestroy {
     ])
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(([task, columnId, board]) => {
-        // this.columnId = columnId;
         if (task.columnId !== columnId) {
           this.tasksSvc.updateTask(
             this.boardId,
@@ -108,11 +105,6 @@ export class TaskModalComponent implements OnInit, OnDestroy {
           );
         }
       });
-
-    // this.columnForm.get('columnId')?.valueChanges.subscribe((columnId) => {
-    //   console.log(columnId);
-    //   this.columnId = columnId;
-    // });
   }
 
   ngOnInit(): void {
@@ -129,8 +121,6 @@ export class TaskModalComponent implements OnInit, OnDestroy {
   }
 
   updateTaskName(taskName: string, userId: any, description: string): void {
-    console.log(taskName);
-
     const columnId = this.columnForm.get('columnId')?.value;
     this.tasksSvc
       .updateTask(
@@ -143,8 +133,6 @@ export class TaskModalComponent implements OnInit, OnDestroy {
       )
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((res: any) => {
-        // console.log(res);
-
         /* Needs avoid reload */
         location.reload();
       });

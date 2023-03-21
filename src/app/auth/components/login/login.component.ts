@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     this.authSvc.login(this.form.value).subscribe(
       (currentUser) => {
-        console.log('Current User ', currentUser);
         this.authSvc.setToken(currentUser);
         this.socketSvc.setupSocketConnection(currentUser);
         this.authSvc.setCurrentUser(currentUser);

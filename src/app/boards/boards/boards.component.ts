@@ -30,7 +30,6 @@ export class BoardsComponent implements OnInit {
 
       this.boardsSvc.getBoards(id).subscribe((boards) => {
         this.boards = boards;
-        console.log(this.boards);
       });
     } else {
       return;
@@ -44,7 +43,6 @@ export class BoardsComponent implements OnInit {
       const id = `${user.id}`;
 
       this.boardsSvc.createBoard(title, id).subscribe((createdboard) => {
-        console.log(createdboard);
         this.boards = [...this.boards, createdboard];
       });
     } else {

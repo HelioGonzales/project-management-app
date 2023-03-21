@@ -42,12 +42,10 @@ export class TaskService {
   updateTask(
     boardId: string,
     taskId: string,
-    // order: 0,
     columnId: string,
     userId: string,
     title?: string,
     description?: string
-    // users: string[]
   ): Observable<TaskInterface> {
     const url = `${environment.apiUrl}/boards/${boardId}/columns/${columnId}/tasks/${taskId}`;
     return this.http.put<TaskInterface>(url, {

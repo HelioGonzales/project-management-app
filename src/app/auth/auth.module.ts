@@ -25,7 +25,6 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    // canActivate: [() => inject(AuthGuard).canActivate()],
   },
 ];
 
@@ -33,7 +32,7 @@ const routes: Routes = [
   declarations: [RegisterComponent, LoginComponent],
   imports: [
     CommonModule,
-    // HttpClientModule,
+
     ReactiveFormsModule,
     RouterModule.forChild(routes),
     TranslateModule.forChild({

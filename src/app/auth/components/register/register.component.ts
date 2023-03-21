@@ -38,8 +38,6 @@ export class RegisterComponent {
 
     this.authSvc.register(this.form.value).subscribe(
       (currentUser) => {
-        console.log('Current User ', currentUser);
-        // this.authSvc.setToken(currentUser)
         this.socketSvc.setupSocketConnection(currentUser);
         this.authSvc.setCurrentUser(currentUser);
         this.errorMessage = null;

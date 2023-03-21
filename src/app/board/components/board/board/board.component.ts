@@ -1,16 +1,8 @@
 import { TaskInterface } from './../../../../shared/types/task.interface';
-import { ColumnInputInterface } from './../../../../shared/types/columnInput.interface';
 import { ColumnsService } from './../../../../shared/services/columns.service';
 import { SockectEventsEnum } from './../../../../shared/types/socketEvents.enum';
 import { BoardsService } from 'src/app/shared/services/boards.service';
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { BoardService } from 'src/app/board/services/board.service';
 import {
@@ -34,11 +26,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class BoardComponent implements OnInit, OnDestroy {
   boardId!: string;
-  // columnId = '64026184b564f2959da6e022';
   columnId!: string;
-  // @ViewChild('columnId') columnId!: string;
-  // board$!: Observable<BoardInterface>;
-  // columns$!: Observable<ColumnInterface[]>;
   userId: any;
   data$: Observable<{
     board: BoardInterface;
@@ -61,14 +49,10 @@ export class BoardComponent implements OnInit, OnDestroy {
     this.route.params.subscribe((id) => {
       this.boardId = id['boardId'];
     });
-    // const boardId = this.route.snapshot.paramMap.get('boardId');
+
     if (!this.boardId) {
       throw new Error('Can not get boardID from url');
     }
-
-    // this.boardId = boardId;
-    // this.board$ = this.boardSvc.baord$.pipe(filter(Boolean));
-    // this.columns$ = this.boardSvc.columns$;
 
     this.data$ = combineLatest([
       this.boardSvc.baord$.pipe(filter(Boolean)),
@@ -83,10 +67,6 @@ export class BoardComponent implements OnInit, OnDestroy {
     );
   }
 
-  // ngAfterViewInit(): void {
-  //   console.log(this.columnId);
-  // }
-
   ngOnInit(): void {
     this.translate.setDefaultLang('en');
     this.translate.setDefaultLang('en');
@@ -100,11 +80,6 @@ export class BoardComponent implements OnInit, OnDestroy {
     });
     this.fetchData();
     this.initializeListeners();
-    // this.data$.subscribe((data: any) => {
-    //   // this.columnId = data.columns._id;
-    //   // console.log(this.columnId);
-    //   // console.log(data.tasks.userId);
-    // });
   }
 
   initializeListeners(): void {
@@ -139,11 +114,6 @@ export class BoardComponent implements OnInit, OnDestroy {
   }
 
   createColumn(title: string, order = 1): void {
-    // const columnInput: ColumnInputInterface = {
-    //   title,
-    //   order: 2,
-    // };
-
     this.columnsSvc
       .createColumn(this.boardId, title, order)
       .pipe(takeUntil(this.unsubscribe$))
@@ -162,7 +132,7 @@ export class BoardComponent implements OnInit, OnDestroy {
   }
 
   deleteColumn(columnId: string) {
-    if (confirm('are ypu sure you want to delete the column???')) {
+    if (confirm('are you sure you want to delete the column???')) {
       this.columnsSvc
         .deleteColumn(this.boardId, columnId)
         .pipe(takeUntil(this.unsubscribe$))
@@ -173,11 +143,6 @@ export class BoardComponent implements OnInit, OnDestroy {
   }
 
   createTask(title: string, columnId: string, userId: any) {
-    // userId.map((task: any) => console.log(task.userId));
-    // console.log(userId);
-
-    // console.log(userId.owner);
-
     this.tasksSvc
       .createTask(this.boardId, columnId, title, userId.owner)
       .pipe(takeUntil(this.unsubscribe$))
@@ -193,8 +158,6 @@ export class BoardComponent implements OnInit, OnDestroy {
   }
 
   updateBoardName(boardName: string, owner: any): void {
-    // console.log(owner.owner);
-
     this.boardsSvc
       .updateBoard(this.boardId, boardName, owner.owner)
       .pipe(takeUntil(this.unsubscribe$))
