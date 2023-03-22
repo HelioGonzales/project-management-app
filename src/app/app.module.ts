@@ -20,7 +20,11 @@ import { BoardsModule } from './boards/boards.module';
 import { HomeModule } from './home/home.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader(
+    http,
+    '/project-management-app/assets/i18n/',
+    '.json'
+  );
 }
 
 @NgModule({

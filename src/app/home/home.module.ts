@@ -33,5 +33,9 @@ const routes: Routes = [
 export class HomeModule {}
 
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader(
+    http,
+    '/project-management-app/assets/i18n/',
+    '.json'
+  );
 }

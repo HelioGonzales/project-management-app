@@ -33,12 +33,16 @@ const routes: Routes = [
         deps: [HttpClient],
       },
     }),
-    FooterModule
+    FooterModule,
   ],
   providers: [AuthGuard, BoardsService],
 })
 export class BoardsModule {}
 
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader(
+    http,
+    '/project-management-app/assets/i18n/',
+    '.json'
+  );
 }
