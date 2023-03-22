@@ -29,12 +29,12 @@
               {
                 "glob": "**/*.svg",
                 "input": "src/assets",
-                "output": "/assets/"
+                "output": "project-management-app/assets/"
               },
               {
                 "glob": "**/*.json",
                 "input": "src/assets/i18n",
-                "output": "/assets/i18n/"
+                "output": "project-management-app/assets/i18n/"
               }
             ],
             "styles": ["src/styles.scss"],
