@@ -1,0 +1,40 @@
+{
+  "HOME": {
+    "LOGIN": "Login",
+    "REGISTER": "Register",
+    "TITLE": "PMS algo",
+    "PARAGRAPH": "Aconsejame primo un resorte de necesitado. Dile a la ley de uso pagado siempre nueva. Destinado a aprender de vejado si el estilo lo permite allí. El hombre embaldosado está parado lágrimas diez alegría allí los términos se ensanchan. Procurando la sospecha continua de sus diez. Hermano de persecución se tienen quince has distantes. Temprano había agregado una visita tranquila a China igual. Aparece una forma sin límites ni alabanza en. En escrito sobre la justicia encantada es amable además. Intermedios insensibles a la ley insaciables para chicos de apartamentos encantadores sin reservas."
+  },
+  "BOARDS": {
+    "BTN": "TABLAS",
+    "HOME_BTN": "CASA",
+    "MY_BOARDS": "Mis tablas",
+    "CREATE_NEW_BOARD": "Crear nueva tabla"
+  },
+  "BOARD": {
+    "DELETE": "Eliminar tabla",
+    "ADD_LIST": "Agregar una lista",
+    "ADD_CARD": "Agrega una tarjeta",
+    "ADD_COLUMN_NAME": "Agrega nombre a la columna",
+    "ADD_LIST_BTN": "Agrega lista",
+    "ADD_CARD_BTN": "Agrega tarjeta",
+    "ENTER_TITLE_CARD": "Ingresa un titulo para esta tarjeta"
+  },
+  "TASKS": {
+    "DELETE": "Eliminar",
+    "ACTIONS": "Acciones"
+  },
+  "REGISTER": {
+    "REGISTER": "Registrate en PMS",
+    "NAME": "Nombre",
+    "USERNAME_REQ": "Nombre de usuario es requerido",
+    "MIN_CHARACTERS": "Minimo 5 caracteres",
+    "LOGIN_REQ": "Login es requerido",
+    "PASSWORD": "Constrasena",
+    "PASSWORD_REQ": "Contrasena es requerida",
+    "REGISTER_BTN": "Registrate",
+    "SIGN_IN": "Inicia sesion",
+    "REGISTER_ACCOUNT": "Registra una cuenta",
+    "LOGIN_PMS": "Inicia sesion en PMS"
+  }
+}

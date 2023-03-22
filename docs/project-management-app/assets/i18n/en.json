@@ -1,0 +1,40 @@
+{
+  "HOME": {
+    "LOGIN": "Login",
+    "REGISTER": "Register",
+    "TITLE": "PMS some sentence",
+    "PARAGRAPH": "Advice me cousin an spring of needed. Tell use paid law ever yet new. Meant to learn of vexed if style allow he there. Tiled man stand tears ten joy there terms any widen. Procuring continued suspicion its ten. Pursuit brother are had fifteen distant has. Early had add equal china quiet visit. Appear an manner as no limits either praise in. In in written on charmed justice is amiable farther besides. Law insensible middletons unsatiable for apartments boy delightful unreserved."
+  },
+  "BOARDS": {
+    "BTN": "BOARDS",
+    "HOME_BTN": "HOME",
+    "MY_BOARDS": "My Boards",
+    "CREATE_NEW_BOARD": "Create new board"
+  },
+  "BOARD": {
+    "DELETE": "Delete board",
+    "ADD_LIST": "Add a list",
+    "ADD_CARD": "Add a card",
+    "ADD_COLUMN_NAME": "Add Column name",
+    "ADD_LIST_BTN": "Add list",
+    "ADD_CARD_BTN": "Add card",
+    "ENTER_TITLE_CARD": "Enter a title for this card"
+  },
+  "TASKS": {
+    "DELETE": "Delete",
+    "ACTIONS": "Actions"
+  },
+  "REGISTER": {
+    "REGISTER": "Register to PMS",
+    "NAME": "Name",
+    "USERNAME_REQ": "Username is required",
+    "MIN_CHARACTERS": "Minimun 5 characters",
+    "LOGIN_REQ": "Login is required",
+    "PASSWORD": "Password",
+    "PASSWORD_REQ": "Password is required",
+    "REGISTER_BTN": "Register",
+    "SIGN_IN": "Sign In",
+    "REGISTER_ACCOUNT": "Register for an account",
+    "LOGIN_PMS": "Login to PMS"
+  }
+}
