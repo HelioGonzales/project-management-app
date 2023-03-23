@@ -88,6 +88,17 @@ export class BoardComponent implements OnInit, OnDestroy {
   // }
 
   ngOnInit(): void {
+    const token = localStorage.getItem('token') || '';
+    if (token) {
+      const user = JSON.parse(atob(token?.split('.')[1]));
+      const id = `${user.id}`;
+      if (!id) {
+        this.router.navigateByUrl('/');
+      }
+    } else {
+      this.router.navigateByUrl('/');
+    }
+
     this.translate.setDefaultLang('en');
     this.translate.setDefaultLang('en');
     const lang = localStorage.getItem('lang');

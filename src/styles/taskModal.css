@@ -24,7 +24,8 @@
   right: 0;
   margin-top: 128px;
   position: absolute;
-  width: 768px;
+  /* width: 768px; */
+  max-width: 70vw;
   min-height: 230px;
   border-radius: 4px;
   box-shadow: 0 2px 4px 0 rgb(0 0 0 / 10%);

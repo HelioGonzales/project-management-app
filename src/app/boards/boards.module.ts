@@ -15,7 +15,7 @@ const routes: Routes = [
   {
     path: 'boards',
     component: BoardsComponent,
-    canActivate: [() => inject(AuthGuard).canActivate()],
+    // canActivate: [() => inject(AuthGuard).canActivate()],
   },
 ];
 
@@ -33,7 +33,7 @@ const routes: Routes = [
         deps: [HttpClient],
       },
     }),
-    FooterModule
+    FooterModule,
   ],
   providers: [AuthGuard, BoardsService],
 })

@@ -10,7 +10,8 @@
 
 .create-column-form .inline-form-container {
   background-color: hsla(0, 0%, 100%, 0.24);
-  color: #fff;
+  /* color: #fff; */
+  color: #000;
   width: 100%;
   height: 100%;
   display: flex;
