@@ -17,7 +17,7 @@ export class TopbarComponent implements OnInit {
   ) {
     this.stateOptions = [
       { label: 'EN', value: 'en' },
-      { label: 'SP', value: 'es' },
+      { label: 'ES', value: 'es' },
     ];
   }
 

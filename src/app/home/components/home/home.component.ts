@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) {
     this.stateOptions = [
       { label: 'EN', value: 'en' },
-      { label: 'SP', value: 'es' },
+      { label: 'ES', value: 'es' },
     ];
   }
 
