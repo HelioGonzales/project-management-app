@@ -19,7 +19,6 @@ const routes: Routes = [
   {
     path: 'boards/:boardId',
     component: BoardComponent,
-    // canActivate: [() => inject(AuthGuard).canActivate()],
     children: [
       {
         path: 'tasks/:taskId',
