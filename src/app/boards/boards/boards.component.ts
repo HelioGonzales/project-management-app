@@ -2,6 +2,7 @@ import { BoardInterface } from './../../shared/types/board.interface';
 import { Component, OnInit } from '@angular/core';
 import { BoardsService } from 'src/app/shared/services/boards.service';
 import { TranslateService } from '@ngx-translate/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-boards',
@@ -13,7 +14,8 @@ export class BoardsComponent implements OnInit {
 
   constructor(
     private boardsSvc: BoardsService,
-    public translate: TranslateService
+    public translate: TranslateService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -27,12 +29,15 @@ export class BoardsComponent implements OnInit {
     if (token) {
       const user = JSON.parse(atob(token?.split('.')[1]));
       const id = `${user.id}`;
+      if (!id) {
+        this.router.navigateByUrl('/');
+      }
 
       this.boardsSvc.getBoards(id).subscribe((boards) => {
         this.boards = boards;
       });
     } else {
-      return;
+      this.router.navigateByUrl('/');
     }
   }
 

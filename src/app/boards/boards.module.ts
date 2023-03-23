@@ -15,7 +15,7 @@ const routes: Routes = [
   {
     path: 'boards',
     component: BoardsComponent,
-    canActivate: [() => inject(AuthGuard).canActivate()],
+    // canActivate: [() => inject(AuthGuard).canActivate()],
   },
 ];
 
