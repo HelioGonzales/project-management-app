@@ -25,6 +25,17 @@
 }
 
 @media screen and (max-width: 640px) {
+  .home-container > div {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 320px) {
+  .home-container > div {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 640px) {
   .home-container {
     display: flex;
     flex-direction: column-reverse;
