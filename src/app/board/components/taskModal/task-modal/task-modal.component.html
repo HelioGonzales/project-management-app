@@ -13,6 +13,9 @@
         <select formControlName="columnId" class="column-select">
           <option *ngFor="let column of data.columns" [ngValue]="column._id">{{ column.title }}</option>
         </select>
+        <div class="task-modal-actions-action"
+          (click)="updateTaskName(data.task.title, data.board.owner, data.task.description)">
+          {{ 'TASKS.UPDATE_BTN' | translate }}</div>
       </form>
       <!-- Needs implementation -->
       <!-- <div class="task-modal-description-label">Description</div>
