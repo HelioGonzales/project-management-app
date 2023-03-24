@@ -30,14 +30,14 @@ export class BoardsComponent implements OnInit {
       const user = JSON.parse(atob(token?.split('.')[1]));
       const id = `${user.id}`;
       if (!id) {
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/project-management-app/');
       }
 
       this.boardsSvc.getBoards(id).subscribe((boards) => {
         this.boards = boards;
       });
     } else {
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/project-management-app/');
     }
   }
 

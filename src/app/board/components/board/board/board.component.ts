@@ -73,10 +73,10 @@ export class BoardComponent implements OnInit, OnDestroy {
       const user = JSON.parse(atob(token?.split('.')[1]));
       const id = `${user.id}`;
       if (!id) {
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/project-management/app/');
       }
     } else {
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/project-management/app/');
     }
 
     this.translate.setDefaultLang('en');
