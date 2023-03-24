@@ -22,6 +22,7 @@
   },
   "TASKS": {
     "DELETE": "Delete",
+    "UPDATE_BTN": "Change task to another column",
     "ACTIONS": "Actions"
   },
   "REGISTER": {

@@ -1,3 +1,4 @@
+import { BoardsService } from 'src/app/shared/services/boards.service';
 import { BoardInterface } from './../../../../shared/types/board.interface';
 import { TaskService } from 'src/app/shared/services/task.service';
 import { ColumnInterface } from 'src/app/shared/types/column.interfacec';
@@ -16,6 +17,7 @@ import { BoardService } from './../../../services/board.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { ColumnsService } from 'src/app/shared/services/columns.service';
 
 @Component({
   selector: 'app-task-modal',
@@ -49,7 +51,9 @@ export class TaskModalComponent implements OnInit, OnDestroy {
     private boardSvc: BoardService,
     private fb: FormBuilder,
     private tasksSvc: TaskService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private columnsSvc: ColumnsService,
+    private boardsSvc: BoardsService
   ) {
     this.route.parent?.params.subscribe((id: Params) => {
       this.boardId = id['boardId'];
@@ -143,10 +147,12 @@ export class TaskModalComponent implements OnInit, OnDestroy {
       )
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((res: any) => {
-        // console.log(res);
-
-        /* Needs avoid reload */
-        location.reload();
+        this.tasksSvc
+          .getTasks(this.boardId)
+          .pipe(takeUntil(this.unsubscribe$))
+          .subscribe((tasks) => {
+            this.boardSvc.setTask(tasks);
+          });
       });
   }
 
@@ -175,10 +181,15 @@ export class TaskModalComponent implements OnInit, OnDestroy {
   // }
 
   deleteTask(boardId: string, columnId: string, taskId: string) {
-    /* Needs refactor, not update the deleted task */
     if (confirm('Are you sure you want to delete this task???')) {
       this.tasksSvc.deleteTask(boardId, columnId, taskId).subscribe((res) => {
-        this.goToBoard();
+        this.tasksSvc
+          .getTasks(this.boardId)
+          .pipe(takeUntil(this.unsubscribe$))
+          .subscribe((tasks) => {
+            this.boardSvc.setTask(tasks);
+            this.goToBoard();
+          });
       });
     }
   }
